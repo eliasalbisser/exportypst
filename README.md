@@ -2,9 +2,13 @@
 
 Use typst to write your notes and export them to a single pdf. No need to worry about organizing.
 
+Prerequisites:
+- typst
+- bash
+
 ## What is this?
 
-A script that takes `.typ` files from a folder and compiles them into one `.pdf`
+A script that takes `.typ` files from a folder and compiles them into a single `.pdf`
 
 ## Who is this for
 
@@ -21,7 +25,7 @@ that is however but one simple use case.
 Will create a folder `./export` containing the file `example.pdf`
 
 See the `./example/` directory on how you _could_ structure your notes.
-Seeing that this is a template, you are free to adjust it to your needs.
+Seeing as this is a template, you are free to adjust it to your needs.
 
 I chose to display a table of contents as well as a (literal) table with the contents the `info.toml` file,
 but other people may regard this as unnecessary.
@@ -50,6 +54,14 @@ By running
 
 you will find the file in `./export/my_course.pdf`
 
-### Whats with the name
+### I use windows, what now?
 
-`typst_note_export` might be saying more but its not very nice sounding.
+You could try using [WSL]()
+
+Run the script like this:
+
+```
+wsl -e ./export.sh example
+```
+
+> This has not been tested, as I do not have access to a machine running windows
