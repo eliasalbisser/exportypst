@@ -32,4 +32,4 @@ done
 typst compile \
     --root=$CURRENT_PATH \
     --input="directory_name=$DIRECTORY_NAME" \
-    template.typ "${EXPORT_PATH}/${DIRECTORY_NAME}.pdf"
+    main.typ "${EXPORT_PATH}/${DIRECTORY_NAME}.pdf"
