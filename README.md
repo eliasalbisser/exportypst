@@ -16,7 +16,7 @@ Anyone looking to write notes on a subject and have it in one pdf.
 While making this I was thinking of lecture notes you would take in a university course,
 that is however but one simple use case.
 
-## How can I use in?
+## How can I use it?
 
 ```bash
 ./export.sh example
@@ -59,6 +59,17 @@ you will find the file in `./export/my_course.pdf`
 ```bash
 ./export_all.sh
 ```
+
+## Upload exported files
+
+To make your life easier. A helper script named `upload.sh` is included.
+
+To use it take the following steps:
+- `cp .env.examples .env`
+- edit your `.env` to your liking
+- edit your `upload.sh` to your liking 
+    (you may need to establish a connection and close it)
+- `./upload.sh` to upload your files to your remote server
 
 You can even exclude folders you do not need by appending them to the array in the `export_all.sh` script
 
