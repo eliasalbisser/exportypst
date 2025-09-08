@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Compile the contents of a folder into a pdf and save into export/ folder.
+
 if [ -z $1 ]; then
     echo "Please supply name of the directory for which you want to export your documents"
     exit 1
@@ -33,3 +35,12 @@ typst compile \
     --root=$CURRENT_PATH \
     --input="directory_name=$DIRECTORY_NAME" \
     main.typ "${EXPORT_PATH}/${DIRECTORY_NAME}.pdf"
+
+status=$?
+
+if [[ $status -ne 0 ]]; then
+    echo "Could not export folder \"$1\""
+    exit $status
+else
+    echo "Successfully exported folder \"$1\""
+fi
