@@ -24,7 +24,7 @@ mkdir -p $EXPORT_PATH
 echo >"$FULL_MODULE_PATH/.export.typ"
 
 # find all files with extension ".typ" but must not start with a dot
-for f in $(find $FULL_MODULE_PATH -type f -name "^\.*.typ"); do
+for f in $(find $FULL_MODULE_PATH -type f -name "[^.]*.typ"); do
     basename=${f##*/}
     # insert pagebreak before each lecture note
     echo "#pagebreak()" >>"$FULL_MODULE_PATH/.export.typ"
