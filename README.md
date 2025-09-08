@@ -54,6 +54,14 @@ By running
 
 you will find the file in `./export/my_course.pdf`
 
+*Alternatively* you can export all files at once by running
+
+```bash
+./export_all.sh
+```
+
+You can even exclude folders you do not need by appending them to the array in the `export_all.sh` script
+
 ### I use windows, what now?
 
 You could try using [WSL]()

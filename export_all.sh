@@ -13,7 +13,7 @@ for d in $(ls "$ABS_PATH"); do
 done
 
 # remove certain folders from DIRECTORIES array
-exclude_dirs=(".git" "export")
+exclude_dirs=(".git" "export") # ADD EXCLUDED DIRECTORIES HERE
 for exclude in ${exclude_dirs[@]}; do
     DIRECTORIES=("${DIRECTORIES[@]/$exclude/}") #Quotes when working with strings
 done
