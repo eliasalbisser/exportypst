@@ -1,15 +1,4 @@
 // any styles go into here
-#let template = doc => {
-  set page(
-    numbering: "1 / 1",
-  )
-  set heading(
-    numbering: "1.1.a",
-  )
-
-  doc
-}
-
 #let get_directory_name() = {
   if "directory_name" not in sys.inputs.keys() {
     panic("Please specify 'directory_name' with '--input=directory_name=example'")
