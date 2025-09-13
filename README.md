@@ -75,7 +75,7 @@ You can even exclude folders you do not need by appending them to the array in t
 
 ### I use windows, what now?
 
-You could try using [WSL]()
+You could try using [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 Run the script like this:
 

@@ -1,3 +1,3 @@
-== First Lecture
+= First Lecture
 
 $ A and B $

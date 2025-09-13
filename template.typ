@@ -1,7 +1,10 @@
 // any styles go into here
 #let template = doc => {
+  set page(
+    numbering: "1 / 1",
+  )
   set heading(
-    numbering: "1.",
+    numbering: "1.1.a",
   )
 
   doc
@@ -28,16 +31,21 @@
 ) = {
   // showing the info from info.toml
   let cells = ()
-  for (k, v) in info_dict {
+  for (i, k) in info_dict.keys().enumerate() {
     cells.push(
       table.cell(x: 0, str(k))
     )
     cells.push(
-      table.cell(x: 1, str(v))
+      table.cell(x: 1, str(info_dict.at(k)))
+    )
+    cells.push(
+      table.hline(y: i+1)
     )
   }
   table(
     columns: 2,
+    stroke: none,
+    align: left,
     ..cells
   )
 }

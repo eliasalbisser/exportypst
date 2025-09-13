@@ -1,3 +1,3 @@
-== Second Lecture
+= Second Lecture
 
 $ A or B $
