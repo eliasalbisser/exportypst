@@ -6,6 +6,10 @@ Prerequisites:
 - typst
 - bash
 
+> 🚧 This is a **Work in Progress** Use at your own discretion! 🚧
+>
+> It is being tested out for real-world application at the moment and may change at any time.
+
 ## What is this?
 
 A script that takes `.typ` files from a folder and compiles them into a single `.pdf`
@@ -40,6 +44,11 @@ mkdir my_course
 
 You have some info on the course. e.g. its title you want to display.
 That info goes into the `./my_course/info.toml` file
+
+### `info.toml`
+
+required fields are:
+- title
 
 And you write your notes e.g. `nvim my_course/01-lecture.typ`
 > Note that the files will be imported in the order of their file-names, so you should use a naming convention. I personally like to use the date e.g. `2025.08.10-lecture.typ`
