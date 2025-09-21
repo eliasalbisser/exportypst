@@ -1,7 +1,17 @@
+// when wanting to use any function from lib.typ, import it as follows
+#import "/lib.typ": *
+
 = Second Lecture
 
 $ A or B $
 
-#homework(datetime(year: 2025, month: 09, day: 21), "https://en.wikipedia.org/wiki/Logic")[
-  Write an introduction to Formal Logic
+#figure(
+  // IMPORTANT: move one directory upwards
+  image("../attachements/golden_ratio.svg", width: 40%),
+  caption: [Graphic Describing the Golden Ratio],
+)
+
+// function from lib.typ
+#homework("2025-01-03", "https://en.wikipedia.org/wiki/Logic")[
+  Write notes on Formal Logic
 ]

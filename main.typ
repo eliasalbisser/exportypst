@@ -1,5 +1,4 @@
 #import "/template.typ": *
-#include "/lib.typ"
 
 #let directory_name = get_directory_name()
 #let info = get_info_dict()
