@@ -18,7 +18,7 @@ for exclude in ${exclude_dirs[@]}; do
     DIRECTORIES=("${DIRECTORIES[@]/$exclude/}") #Quotes when working with strings
 done
 
-for note_dir in ${DIRECTORIES[@]}; do
-    echo "Exporting \"$note_dir\"..."
-    bash ./export.sh $note_dir
+for module_dir in ${DIRECTORIES[@]}; do
+    echo "Exporting \"$module_dir\"..."
+    bash ./export.sh $module_dir
 done

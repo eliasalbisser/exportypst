@@ -7,35 +7,40 @@ if [ -z $1 ]; then
     exit 1
 fi
 
-CURRENT_PATH=$(pwd)
-DIRECTORY_NAME=$1
-FULL_MODULE_PATH=$CURRENT_PATH/$DIRECTORY_NAME
+# absolute path
+PROJECT_ROOT=$(dirname $(realpath "$0"))
+MODULE_DIR=$1
+FULL_MODULE_PATH=$PROJECT_ROOT/$MODULE_DIR
 
 if [ ! -d $FULL_MODULE_PATH ]; then
     echo "Directory $FULL_MODULE_PATH does not exist"
     exit 1
 fi
 
+# TODO: export files directly into MODULE_DIR and update "upload.sh" script
 # create export directory
-EXPORT_PATH="$CURRENT_PATH/export"
+EXPORT_PATH="$PROJECT_ROOT/export"
 mkdir -p $EXPORT_PATH
+
+NOTES_SUBDIR="notes"
 
 # clear text from ".export.typ" file
 echo >"$FULL_MODULE_PATH/.export.typ"
 
 # find all files with extension ".typ" but must not start with a dot
-for f in $(find $FULL_MODULE_PATH -type f -name "[^.]*.typ" | sort); do
-    basename=${f##*/}
+for f in $(find "$FULL_MODULE_PATH/$NOTES_SUBDIR" -type f -name "[^.]*.typ" | sort); do
+    # basename
+    typ_filename=${f##*/}
     # insert pagebreak before each lecture note
     echo "#pagebreak()" >>"$FULL_MODULE_PATH/.export.typ"
     # append each typst module as an include into the export file
-    echo "#include \"/$DIRECTORY_NAME/$basename\"" >>"$FULL_MODULE_PATH/.export.typ"
+    echo "#include \"/$MODULE_DIR/$NOTES_SUBDIR/$typ_filename\"" >>"$FULL_MODULE_PATH/.export.typ"
 done
 
 typst compile \
-    --root=$CURRENT_PATH \
-    --input="directory_name=$DIRECTORY_NAME" \
-    main.typ "${EXPORT_PATH}/${DIRECTORY_NAME}.pdf"
+    --root=$PROJECT_ROOT \
+    --input="directory_name=$MODULE_DIR" \
+    main.typ "${EXPORT_PATH}/${MODULE_DIR}.pdf"
 
 status=$?
 
