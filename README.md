@@ -71,16 +71,24 @@ you will find the file in `./export/my_course.pdf`
 
 ## Upload exported files
 
-To make your life easier. A helper script named `upload.sh` is included.
+To make your life easier. A helper script named `upload_exports.sh` is included.
 
 To use it take the following steps:
 - `cp .env.examples .env`
 - edit your `.env` to your liking
-- edit your `upload.sh` to your liking 
+- edit your `upload_exports.sh` to your liking 
     (you may need to establish a connection and close it)
 - `./upload.sh` to upload your files to your remote server
 
 You can even exclude folders you do not need by appending them to the array in the `export_all.sh` script
+
+## Upload the whole project
+
+Instead of using git to commit all of your files, including attachments or books you need for your studies, upload them onto a share.
+
+Use the `sync.sh` script to do that.
+
+> Follow the same steps as for the `upload_exports.sh` file.
 
 ### I use windows, what now?
 
