@@ -50,10 +50,14 @@ That info goes into the `./my_course/info.toml` file
 required fields are:
 - title
 
-And you write your notes e.g. `nvim my_course/01-lecture.typ`
-> Note that the files will be imported in the order of their file-names, so you should use a naming convention. I personally like to use the date e.g. `2025.08.10-lecture.typ`
+And you write your notes e.g. `nvim my_course/notes/01-lecture.typ`
+> Note that the files will be imported in the order of their file-names, so you should use a naming convention.
+> I personally like to use the date e.g. `2025.08.10-lecture.typ`
 
-You will end up with different files in your folder
+Over the semester, you will likely end up with different files in your folder.
+
+For that reason I chose to organise the notes into a subdirectory, and not directly in the course root.
+This will help you to keep your files clean.
 
 By running
 
@@ -100,4 +104,4 @@ Run the script like this:
 wsl -e ./export.sh example
 ```
 
-> This has not been tested, as I do not have access to a machine running windows
+> This has not been tested as I do not have access to a machine running windows
