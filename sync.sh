@@ -19,6 +19,6 @@ source ./.env
 
 prelude
 
-RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avzu . --exclude-from=".rsync_exclude" rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"
+RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avz . --exclude=".git" --include-from=".rsync_include" --exclude-from=".rsync_exclude" rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"
 
 postlude
