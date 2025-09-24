@@ -19,6 +19,6 @@ source ./.env
 
 prelude
 
-RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avzu --mkpath ./export/*.pdf rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_EXPORT"
+RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avz ./export/*.pdf rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_EXPORT"
 
 postlude
