@@ -7,7 +7,7 @@ $ A or B $
 
 #figure(
   // IMPORTANT: move one directory upwards
-  image("../attachements/golden_ratio.svg", width: 40%),
+  image("../attachments/golden_ratio.svg", width: 40%),
   caption: [Graphic Describing the Golden Ratio],
 )
 
