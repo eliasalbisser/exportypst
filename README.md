@@ -5,6 +5,7 @@ Use typst to write your notes and export them to a single pdf. No need to worry 
 Prerequisites:
 - typst
 - bash
+- rsync
 
 > 🚧 This is a **Work in Progress** Use at your own discretion! 🚧
 >
@@ -88,11 +89,14 @@ You can even exclude folders you do not need by appending them to the array in t
 
 ## Upload the whole project
 
-Instead of using git to commit all of your files, including attachments or books you need for your studies, upload them onto a share.
+Instead of using git to commit all of your files, including attachments or books you need for your studies, upload them onto a remote server.
 
 Use the `sync.sh` script to do that.
 
 > Follow the same steps as for the `upload_exports.sh` file.
+
+`sync.sh` uses rsync and first fetches any updated files from the remote
+and then uploads all relevant files to said remote
 
 ### I use windows, what now?
 
