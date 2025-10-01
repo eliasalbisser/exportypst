@@ -1,5 +1,15 @@
 export/
 *.pdf
 .env
-
 */.export.typ
+
+# ADD SUBDIRECTORIES OF COURSES WHICH SHOULD BE IGNORED
+*/attachements/
+*/literature/
+
+# GENERALLY IGNORE THESE FILES, UNLESS EXPLICITLY ADDED
+*.ipynb
+
+# EXPLICITLY ADD FILES HERE
+# track python notebooks in homework folder (un-ignore with "!")
+!*/homework/*.ipynb
