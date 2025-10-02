@@ -4,7 +4,7 @@ export/
 */.export.typ
 
 # ADD SUBDIRECTORIES OF COURSES WHICH SHOULD BE IGNORED
-*/attachements/
+*/attachments/
 */literature/
 
 # GENERALLY IGNORE THESE FILES, UNLESS EXPLICITLY ADDED
