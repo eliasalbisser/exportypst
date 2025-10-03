@@ -11,6 +11,22 @@ Prerequisites:
 >
 > It is being tested out for real-world application at the moment and may change at any time.
 
+## Usage
+
+```
+Usage: exportypst.sh [-h | --help] [ARGUMENT]... 
+
+-h, --help        Display this help
+
+export example    export pdf for the folder 'example'
+export_all        export pdfs for all folders in project root
+
+push exports      upload exported pdf to the remote
+
+push files        upload relevant files to the remote
+pull files        download relevant files from the remote
+```
+
 ## What is this?
 
 A script that takes `.typ` files from a folder and compiles them into a single `.pdf`
@@ -24,7 +40,7 @@ that is however but one simple use case.
 ## How can I use it?
 
 ```bash
-./export.sh example
+./exportypst.sh export example
 ```
 
 Will create a folder `./export` containing the file `example.pdf`
@@ -63,7 +79,7 @@ This will help you to keep your files clean.
 By running
 
 ```bash
-./export.sh my_course
+./exportypst.sh export my_course
 ```
 
 you will find the file in `./export/my_course.pdf`
@@ -71,18 +87,22 @@ you will find the file in `./export/my_course.pdf`
 *Alternatively* you can export all files at once by running
 
 ```bash
-./export_all.sh
+./exportypst.sh export_all
 ```
 
 ## Upload exported files
 
-To make your life easier. A helper script named `upload_exports.sh` is included.
+To make your life easier, helper functionality is implemented.
+
+```
+./exportypst.sh push exports
+```
 
 To use it take the following steps:
 - `cp .env.examples .env`
 - edit your `.env` to your liking
-- edit your `upload_exports.sh` to your liking 
-    (you may need to establish a connection and close it)
+- edit your `exportypst.sh` to your liking 
+    (you may need to establish a connection and close it, you can find it at the *top of the script*)
 - `./upload.sh` to upload your files to your remote server
 
 You can even exclude folders you do not need by appending them to the array in the `export_all.sh` script
@@ -91,12 +111,12 @@ You can even exclude folders you do not need by appending them to the array in t
 
 Instead of using git to commit all of your files, including attachments or books you need for your studies, upload them onto a remote server.
 
-Use the `sync.sh` script to do that.
+Use `./exportypst.sh push files` to do that.
 
-> Follow the same steps as for the `upload_exports.sh` file.
+> Follow the same steps as you did to upload exported files
 
-`sync.sh` uses rsync and first fetches any updated files from the remote
-and then uploads all relevant files to said remote
+*If you use multiple computers to take notes*, download from the remote with
+Use `./exportypst.sh pull files` to do that.
 
 ### I use windows, what now?
 
@@ -105,7 +125,7 @@ You could try using [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 Run the script like this:
 
 ```
-wsl -e ./export.sh example
+wsl -e ./exportypst.sh export my_course
 ```
 
 > This has not been tested as I do not have access to a machine running windows
