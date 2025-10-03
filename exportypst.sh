@@ -13,7 +13,20 @@ fn_connection_postlude() {
 }
 
 # TODO: display usage here
-# fn_display_usage() {; }
+fn_display_usage() {
+    echo "Usage: $(basename "$0") [-h | --help] [ARGUMENT]... "
+    echo ""
+    echo "-h, --help        Display this help"
+    echo ""
+    echo "export example    export pdf for the folder 'example'"
+    echo "export_all        export pdfs for all folders in project root"
+    echo ""
+    echo "push exports      upload exported pdf to the remote"
+    echo ""
+    echo "push files        upload relevant files to the remote"
+    echo "pull files        download relevant files from the remote"
+    echo ""
+}
 
 # export only the pdf from notes inside the directory basename "$1"
 fn_export_pdf() {
@@ -119,3 +132,40 @@ fn_push_remote_files() {
 
 # source environment variables
 source ./.env
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+    -h | --help)
+        fn_display_usage
+        exit 0
+        ;;
+    export)
+        fn_export_pdf $2
+        exit 0
+        ;;
+    export_all)
+        fn_export_pdf_all
+        exit 0
+        ;;
+    pull)
+        fn_pull_remote_files
+        exit 0
+        ;;
+    push)
+        case $2 in
+        exports)
+            fn_push_exports
+            exit 0
+            ;;
+        files)
+            fn_push_remote_files
+            exit 0
+            ;;
+        esac
+        ;;
+    *)
+        fn_display_usage
+        exit 0
+        ;;
+    esac
+done
