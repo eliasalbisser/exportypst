@@ -12,7 +12,6 @@ fn_connection_postlude() {
     echo
 }
 
-# TODO: display usage here
 fn_display_usage() {
     echo "Usage: $(basename "$0") [-h | --help] [ARGUMENT]... "
     echo ""
@@ -46,12 +45,13 @@ fn_export_pdf() {
         exit 1
     fi
 
-    # TODO: export files directly into MODULE_DIR and update "upload.sh" script
     # create export directory
     EXPORT_PATH="$PROJECT_ROOT/export"
     mkdir -p $EXPORT_PATH
 
     NOTES_SUBDIR="notes"
+
+    # TODO: check first if info.toml exists. If not, throw error and exit
 
     # clear text from ".export.typ" file
     echo >"$FULL_MODULE_PATH/.export.typ"
@@ -92,7 +92,7 @@ fn_export_pdf_all() {
         fi
     done
 
-    # TODO: make a global var containing those folders, and perhaps put .rsync_exclude contents into a var as well?
+    # TODO: make a global var containing those folders
     # remove certain folders from DIRECTORIES array
     exclude_dirs=(".git" "export") # ADD EXCLUDED DIRECTORIES HERE
     for exclude in ${exclude_dirs[@]}; do
@@ -115,7 +115,7 @@ fn_push_exports() {
 # pull all relevant files from remote
 fn_pull_remote_files() {
     fn_connection_prelude
-    RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avz rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"/ --update ./
+    RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avz rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"/ ./ --update
     fn_connection_postlude
 }
 
@@ -126,7 +126,8 @@ fn_push_remote_files() {
         --exclude=".git" \
         --include="*/ */* */*.typ *.typ *.sh" \
         --exclude="*" \
-        rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"/
+        rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"/ \
+        --delete
     fn_connection_postlude
 }
 
