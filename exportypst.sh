@@ -134,6 +134,11 @@ fn_push_remote_files() {
 # source environment variables
 source ./.env
 
+if [[ $# -eq 0 ]]; then
+    fn_display_usage
+    exit 0
+fi
+
 while [[ $# -gt 0 ]]; do
     case $1 in
     -h | --help)
