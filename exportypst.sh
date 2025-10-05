@@ -131,7 +131,7 @@ fn_push_remote_files() {
     RSYNC_PASSWORD=$RSYNC_PASSWORD rsync -avz ./ \
         --exclude=".git" \
         --include="*/ */* */*.typ *.typ *.sh" \
-        --exclude="*" \
+        --exclude=".export.typ .env README.md " \
         rsync://"$REMOTE_USER"@"$REMOTE_HOST":"$REMOTE_DESTINATION_NOTES"/ \
         --delete
     fn_connection_postlude
