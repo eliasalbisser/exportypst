@@ -86,10 +86,16 @@ fn_export_pdf_all() {
 
     DIRECTORIES=()
 
-    for d in $(ls "$ABS_PATH"); do
-        if [[ -d $d ]]; then
+    for d in $(find "$ABS_PATH" -maxdepth 1 -type d); do
+
+        d=$(basename $d)
+
+        lines=$(find "$d" -type f -name "info.toml" | wc -l)
+
+        if [[ $lines -gt 0 ]]; then
             DIRECTORIES=("${DIRECTORIES[@]}" "$d")
         fi
+
     done
 
     # TODO: make a global var containing those folders
